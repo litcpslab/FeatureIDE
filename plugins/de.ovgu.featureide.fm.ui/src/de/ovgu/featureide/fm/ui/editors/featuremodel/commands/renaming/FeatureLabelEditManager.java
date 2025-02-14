@@ -61,7 +61,7 @@ public class FeatureLabelEditManager extends DirectEditManager implements GUIDef
 	private final IManager<IFeatureModel> featureModelManager;
 	private final FeatureEditPart editPart;
 
-	public FeatureLabelEditManager(FeatureEditPart editPart, Class<?> editorType, FeatureCellEditorLocator locator,
+	public FeatureLabelEditManager(FeatureEditPart editPart, Class<? extends CellEditor> editorType, FeatureCellEditorLocator locator,
 			IManager<IFeatureModel> featureModelManager) {
 		super(editPart, editorType, locator);
 		this.featureModelManager = featureModelManager;
