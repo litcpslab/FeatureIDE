@@ -29,6 +29,7 @@ import java.util.Map;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.draw2d.zoom.ZoomListener;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.draw2d.zoom.ZoomListener;
 import org.eclipse.gef.editparts.ZoomManager;
@@ -184,8 +185,9 @@ public class FeatureUIHelper {
 		zoomManager.addZoomListener(new ZoomListener() {
 
 			@Override
-			public void zoomChanged(double newZoomFactor) {
-				FeatureUIHelper.zoomFactor = newZoomFactor;
+			public void zoomChanged(double newZoomLevel) {
+				FeatureUIHelper.zoomFactor = newZoomLevel;
+
 			}
 		});
 	}
@@ -300,3 +302,4 @@ public class FeatureUIHelper {
 	}
 
 }
+
