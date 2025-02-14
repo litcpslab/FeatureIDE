@@ -153,3 +153,4 @@ public class FeatureLabelEditManager extends DirectEditManager implements GUIDef
 	}
 
 }
+
