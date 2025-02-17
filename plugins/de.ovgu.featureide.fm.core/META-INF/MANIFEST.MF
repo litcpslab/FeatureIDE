@@ -15,7 +15,7 @@ Bundle-ClassPath: .,
  lib/antlr4-runtime-4.13.2.jar,
  lib/uvl-parser.jar,
  lib/commons-math-2.2.jar,
- lib/ST-4.3.4.jar
+ lib/uvl-parser.jar
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-Activator: de.ovgu.featureide.fm.core.FMCorePlugin
 Bundle-Vendor: University of Magdeburg
@@ -162,4 +162,5 @@ Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: de.ovgu.featureide.fm.core
 Import-Package: de.ovgu.featureide.fm.core.base,
  org.antlr.v4.runtime.tree
+
 
