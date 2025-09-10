@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.ovgu.featureide</groupId>
@@ -7,11 +8,11 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho-version>4.0.10</tycho-version>
-		<tycho-extras-version>4.0.10</tycho-extras-version>
+		<tycho-version>4.0.13</tycho-version>
+		<tycho-extras-version>4.0.13</tycho-extras-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 		<tycho.testArgLine></tycho.testArgLine>
 	</properties>
 
@@ -33,13 +34,10 @@
 		<module>plugins/de.ovgu.featureide.core.images</module>
 		<module>plugins/de.ovgu.featureide.core.mpl</module>
 		<module>plugins/de.ovgu.featureide.core.munge</module>
-		<module>plugins/de.ovgu.featureide.core.munge.android</module>
 		<module>plugins/de.ovgu.featureide.core.runtime</module>
-		<module>plugins/de.ovgu.featureide.examples</module>
 		<module>plugins/de.ovgu.featureide.migration</module>
-		<module>plugins/de.ovgu.featureide.ui.android</module>
 		<module>plugins/de.ovgu.featureide.ui.mpl</module>
-		
+
 		<!--Testmodules-->
 		<module>tests/de.ovgu.featureide.fm.core-test</module>
 		<module>tests/de.ovgu.featureide.fm.ui-test</module>
@@ -52,47 +50,56 @@
 		<module>tests/de.ovgu.featureide.fm.attributes-test</module>
 	</modules>
 
-	<!--The profiles are NightlyUpdates (nu) and GuiTests (gui)
+	<!--The
+	profiles are NightlyUpdates (nu) and GuiTests (gui)
 		run 'mvn -Pnu clean package' to build an update-site
 		run 'mvn -Pnu -Pgui clean verify' to build update-site and execute gui-tests
 		NOTE: 	Do not run 'mvn -Pgui clean verify'. 
 				Gui-Test-Module needs an installable FeatureIDE-Version from nu.-->
 	<profiles>
 		<profile>
-            <id>nu</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <modules>
-                <module>deploy</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>gui</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <modules>
-                <module>gui-tests/de.ovgu.featureide.fm.gui-test</module>
-            </modules>
-        </profile>
-    </profiles>
+			<id>nu</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>deploy/br.ufal.ic.colligens.feature</module>
+				<module>deploy/de.ovgu.featureide.featurecpp</module>
+				<module>deploy/de.ovgu.featureide.featurehouse</module>
+				<module>deploy/de.ovgu.featureide</module>
+				<module>deploy/de.ovgu.featureide.ahead</module>
+				<module>deploy/de.ovgu.featureide.antenna</module>
+				<module>deploy/de.ovgu.featureide.aspectj</module>
+				<module>deploy/de.ovgu.featureide.featuremodeling</module>
+				<module>deploy/de.ovgu.featureide.munge</module>
+				<module>deploy/NightlyUpdate</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>gui</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>gui-tests/de.ovgu.featureide.fm.gui-test</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>deprecated-build</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>deploy</module>
+				<module>plugins/de.ovgu.featureide.examples</module>
+				<module>plugins/de.ovgu.featureide.ui.android</module>
+				<module>plugins/de.ovgu.featureide.core.munge.android</module>
+			</modules>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.1</version>
-                <configuration>
-                    <reportOutputDirectory>${project.basedir}/../Javadoc</reportOutputDirectory>
-                    <destDir>${project.name}</destDir>
-                    <debug>true</debug>
-                    <doclint>none</doclint>
-                    <failOnWarnings>false</failOnWarnings>
-                </configuration>
-            </plugin>
-        
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
@@ -121,6 +128,11 @@
 							<os>macosx</os>
 							<ws>cocoa</ws>
 							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>aarch64</arch>
 						</environment>
 					</environments>
 				</configuration>
@@ -189,9 +201,7 @@
 										<artifactId>
 											maven-resources-plugin
 										</artifactId>
-										<versionRange>
-											[2.4.3,)
-										</versionRange>
+										<versionRange>[3.3.1,)</versionRange>
 										<goals>
 											<goal>resources</goal>
 											<goal>testResources</goal>
@@ -209,9 +219,7 @@
 										<artifactId>
 											tycho-compiler-plugin
 										</artifactId>
-										<versionRange>
-											[0.23.1,)
-										</versionRange>
+										<versionRange>[3.0.0,]</versionRange>
 										<goals>
 											<goal>compile</goal>
 										</goals>
@@ -228,9 +236,7 @@
 										<artifactId>
 											tycho-packaging-plugin
 										</artifactId>
-										<versionRange>
-											[0.23.1,)
-										</versionRange>
+										<versionRange>[3.0.0,]</versionRange>
 										<goals>
 											<goal>build-qualifier</goal>
 											<goal>build-qualifier-aggregator</goal>
@@ -254,6 +260,19 @@
 	<reporting>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.11.2</version>
+				<configuration>
+					<reportOutputDirectory>${project.basedir}/../Javadoc</reportOutputDirectory>
+					<destDir>${project.name}</destDir>
+					<debug>true</debug>
+					<doclint>none</doclint>
+					<failOnWarnings>false</failOnWarnings>
+				</configuration>
+			</plugin>
+
+			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.4</version>
@@ -270,12 +289,9 @@
 
 	<repositories>
 		<repository>
-			<id>2024-12</id>
-			<url>http://download.eclipse.org/releases/2024-12</url>
+			<id>2025-06</id>
+			<url>http://download.eclipse.org/releases/2025-06</url>
 			<layout>p2</layout>
 		</repository>
 	</repositories>
-
-	<dependencies>
-	</dependencies>
 </project>
