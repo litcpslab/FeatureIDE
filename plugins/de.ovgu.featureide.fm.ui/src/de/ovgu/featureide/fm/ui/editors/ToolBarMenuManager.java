@@ -87,3 +87,4 @@ public class ToolBarMenuManager extends MenuManager {
 		});
 	}
 }
+
