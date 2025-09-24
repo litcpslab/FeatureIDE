@@ -74,4 +74,14 @@ public class ToolBarMenuManager extends MenuManager {
 		});
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.jface.action.MenuManager#dispose()
+	 */
+	@Override
+	public void dispose() {
+		super.dispose();
+		image.dispose();
+	}
+
 }
