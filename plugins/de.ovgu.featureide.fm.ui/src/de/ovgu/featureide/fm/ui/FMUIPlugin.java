@@ -1,5 +1,6 @@
 /* FeatureIDE - A Framework for Feature-Oriented Software Development
  * Copyright (C) 2005-2019  FeatureIDE team, University of Magdeburg, Germany
+ *                    2025  Malte Grave, VaSiCS, LIT CPS Lab, Johannes Kepler University, Linz
  *
  * This file is part of FeatureIDE.
  *
@@ -30,6 +31,9 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
@@ -83,7 +87,14 @@ public class FMUIPlugin extends AbstractUIPlugin {
 	}
 
 	public static Image getImage(String name) {
-		return getDefault().getImageDescriptor("icons/" + name).createImage();
+		final ImageDescriptor descriptor = getDefault().getImageDescriptor("icons/" + name);
+		if (descriptor != null) {
+			return descriptor.createImage();
+		} else {
+			final IStatus status = new Status(IStatus.WARNING, PLUGIN_ID, "[FeatureIDE] Image not found: icons/" + name);
+			getDefault().getLog().log(status);
+			return null;
+		}
 	}
 
 	/**
