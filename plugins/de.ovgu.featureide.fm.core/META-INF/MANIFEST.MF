@@ -7,7 +7,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.swt
 Bundle-ClassPath: .,
- lib/org.sat4j.core.jar,
+ lib/antlr-3.4.jar,
+ lib/org.ow2.sat4j.core-2.3.6.jar,
  lib/org.sat4j.pb.jar,
  lib/splar.jar,
  lib/SPLCAT.jar,
@@ -161,3 +162,4 @@ Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: de.ovgu.featureide.fm.core
 Import-Package: de.ovgu.featureide.fm.core.base,
  org.antlr.v4.runtime.tree
+
