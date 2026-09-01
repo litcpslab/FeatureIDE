@@ -289,8 +289,8 @@
 
 	<repositories>
 		<repository>
-			<id>2026-03</id>
-			<url>http://download.eclipse.org/releases/2026-03</url>
+			<id>2026-09</id>
+			<url>http://download.eclipse.org/releases/2026-09</url>
 			<layout>p2</layout>
 		</repository>
 	</repositories>
