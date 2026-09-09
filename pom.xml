@@ -8,8 +8,8 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho-version>5.0.2</tycho-version>
-		<tycho-extras-version>5.0.2</tycho-extras-version>
+		<tycho-version>5.0.4</tycho-version>
+		<tycho-extras-version>5.0.4</tycho-extras-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
@@ -23,31 +23,9 @@
 		<module>plugins/de.ovgu.featureide.fm.attributes</module>
 		<module>plugins/de.ovgu.featureide.core</module>
 		<module>plugins/de.ovgu.featureide.ui</module>
-		<module>plugins/br.ufal.ic.colligens</module>
-		<module>plugins/de.ovgu.featureide.core.ahead</module>
-		<module>plugins/de.ovgu.featureide.core.antenna</module>
-		<module>plugins/de.ovgu.featureide.core.aspectj</module>
-		<module>plugins/de.ovgu.featureide.core.conversion.ahead-featurehouse</module>
-		<module>plugins/de.ovgu.featureide.core.featurecpp</module>
-		<module>plugins/de.ovgu.featureide.core.featurehouse</module>
 		<module>plugins/de.ovgu.featureide.core.framework</module>
 		<module>plugins/de.ovgu.featureide.core.images</module>
-		<module>plugins/de.ovgu.featureide.core.mpl</module>
-		<module>plugins/de.ovgu.featureide.core.munge</module>
 		<module>plugins/de.ovgu.featureide.core.runtime</module>
-		<module>plugins/de.ovgu.featureide.migration</module>
-		<module>plugins/de.ovgu.featureide.ui.mpl</module>
-
-		<!--Testmodules-->
-		<module>tests/de.ovgu.featureide.fm.core-test</module>
-		<module>tests/de.ovgu.featureide.fm.ui-test</module>
-		<module>tests/de.ovgu.featureide.ui-test</module>
-		<module>tests/de.ovgu.featureide.core.ahead-test</module>
-		<module>tests/de.ovgu.featureide.core.antenna-test</module>
-		<module>tests/de.ovgu.featureide.core.aspectj-test</module>
-		<module>tests/de.ovgu.featureide.core.featurehouse-test</module>
-		<module>tests/de.ovgu.featureide.core.munge-test</module>
-		<module>tests/de.ovgu.featureide.fm.attributes-test</module>
 	</modules>
 
 	<!--The
@@ -63,15 +41,8 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>deploy/br.ufal.ic.colligens.feature</module>
-				<module>deploy/de.ovgu.featureide.featurecpp</module>
-				<module>deploy/de.ovgu.featureide.featurehouse</module>
 				<module>deploy/de.ovgu.featureide</module>
-				<module>deploy/de.ovgu.featureide.ahead</module>
-				<module>deploy/de.ovgu.featureide.antenna</module>
-				<module>deploy/de.ovgu.featureide.aspectj</module>
 				<module>deploy/de.ovgu.featureide.featuremodeling</module>
-				<module>deploy/de.ovgu.featureide.munge</module>
 				<module>deploy/NightlyUpdate</module>
 			</modules>
 		</profile>

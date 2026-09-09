@@ -12,7 +12,6 @@
 
 	<modules>
 		<!--Features-->
-		<module>br.ufal.ic.colligens.feature</module>
 		<module>de.ovgu.featureide</module>
 		<module>de.ovgu.featureide.ahead</module>
 		<module>de.ovgu.featureide.antenna</module>
