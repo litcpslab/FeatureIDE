@@ -39,6 +39,7 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.IPageChangedListener;
 import org.eclipse.jface.dialogs.PageChangedEvent;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.ColumnViewerEditor;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
@@ -398,6 +399,8 @@ public class FeatureAttributeView extends ViewPart implements IEventListener {
 		treeViewer.addFilter(new FeatureAttributeViewSelectionFilter(this));
 		treeViewer.setContentProvider(new FeatureAttributeContentProvider(this));
 		treeViewer.setUseHashlookup(true);
+		// show the attributes of all features without expanding them manually
+		treeViewer.setAutoExpandLevel(AbstractTreeViewer.ALL_LEVELS);
 
 		// make lines and header visible and set layout
 		tree = treeViewer.getTree();
@@ -760,7 +763,8 @@ public class FeatureAttributeView extends ViewPart implements IEventListener {
 			if (!treeViewer.getControl().isDisposed()) {
 				treeViewer.refresh(manager.getVarObject());
 			}
-			if (getMode() == FeatureAttributeOperationMode.CONFIGURATION_EDITOR) {
+			if ((getMode() == FeatureAttributeOperationMode.CONFIGURATION_EDITOR)
+				|| (getMode() == FeatureAttributeOperationMode.FEATURE_DIAGRAM)) {
 				treeViewer.expandAll();
 				repackAllColumns();
 			}
