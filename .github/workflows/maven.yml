@@ -60,8 +60,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven
 
+      # Tycho 5 uses a fixed reproducible timestamp (1980-02-01) as qualifier if none is given. Then every build has
+      # the same version and p2 does not update installations, so the time of the built commit is used instead.
       - name: Build update site only
-        run: mvn -B -Pnu package
+        run: mvn -B -Pnu package -DforceContextQualifier=$(TZ=UTC git log -1 --format=%cd --date=format-local:%Y%m%d%H%M)
 
       - name: Upload update site artifact
         uses: actions/upload-artifact@v4
