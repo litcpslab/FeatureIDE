@@ -89,17 +89,16 @@ public abstract class FeatureAttribute<T> implements IFeatureAttribute<T> {
 	 * @param oldAttribute The attribute to be copied
 	 * @param feature The feature to contain this attribute
 	 */
-	@SuppressWarnings("unchecked")
 	protected FeatureAttribute(FeatureAttribute<T> oldAttribute, IFeature feature) {
 		this.feature = feature;
-		name = new String(oldAttribute.name);
-		unit = new String(oldAttribute.unit);
-		value = STRING.equals(oldAttribute.attributeType) 
-				? (T) new String((String)oldAttribute.value)
-				: oldAttribute.value;
+		// strings and the attribute values (String, Long, Double, Boolean) are immutable, so they can be shared;
+		// this also copies attributes without value (e.g. a newly added string attribute has the value null)
+		name = oldAttribute.name;
+		unit = oldAttribute.unit;
+		value = oldAttribute.value;
 		recursive = oldAttribute.recursive;
 		configureable = oldAttribute.configureable;
-		attributeType = new String(oldAttribute.attributeType);
+		attributeType = oldAttribute.attributeType;
 	}
 
 	@Override
