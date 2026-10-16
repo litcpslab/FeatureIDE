@@ -66,9 +66,10 @@ public class FeatureAttributeSelectionListener implements ISelectionChangedListe
 
 		treeViewer.refresh();
 
-		for (IFeature iFeature : selectedAutomaticFeatures) {
-			treeViewer.setExpandedState(iFeature, true);
-		}
+		// Expand everything shown (the selected features, their parents and attributes). Expanding the features one by
+		// one does not work for the first selection: the selected feature comes before its parents, so its tree item
+		// does not exist yet while the parents are collapsed.
+		treeViewer.expandAll();
 		view.repackAllColumns();
 
 	}
